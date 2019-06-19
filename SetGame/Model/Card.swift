@@ -39,7 +39,7 @@ struct Card:CustomStringConvertible,Hashable{
 
 
 enum Value:Int, CaseIterable{
-    case first = 0
+    case first = 1
     case second
     case third
     static let all:Set = [Value.first,.second,.third]

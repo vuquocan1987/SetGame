@@ -65,11 +65,13 @@ class SetGameViewController: UIViewController,UIDynamicAnimatorDelegate {
             UIViewPropertyAnimator.runningPropertyAnimator(
                 withDuration: GameInfo.drawCardAnimationTime,
                 delay: 0.0, options: .curveEaseIn,
-                animations: {
+                animations: { [weak self] in
                     for index in indices {
                         
                         //care
+                        if let self = self {
                         self.setCardButtons[index].frame = self.discardFrame
+                        }
                     }
             },
                 completion: {position in
@@ -81,9 +83,13 @@ class SetGameViewController: UIViewController,UIDynamicAnimatorDelegate {
                 UIViewPropertyAnimator.runningPropertyAnimator(
                     withDuration: GameInfo.drawCardAnimationTime,
                     delay: 0.0, options: .curveEaseIn,
-                    animations: {
+                    animations: { [weak self] in
+                        if let self = self {
+                            
+                        
                         for index in indices {
                             self.setCardButtons[index].frame = self.grid[index]!
+                        }
                         }
                     })
             })
@@ -193,8 +199,8 @@ class SetGameViewController: UIViewController,UIDynamicAnimatorDelegate {
             positioningAnimator = UIViewPropertyAnimator.runningPropertyAnimator(
                 withDuration: GameInfo.drawCardAnimationTime,
                 delay: 0.0, options: .curveEaseInOut,
-                animations: repositionAllButtonViews){
-                    _ in self.animator.removeAllBehaviors()
+                animations: repositionAllButtonViews){ [weak self]
+                    _ in self?.animator.removeAllBehaviors()
             }
             
         } else {

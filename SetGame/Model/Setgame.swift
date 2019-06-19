@@ -77,17 +77,17 @@ struct SetGame{
         
     }
     static func isSet(cards: [Card]) -> Bool{
-        return true
+//        return true
         
-//        let matchedShade = Value.thirdMatched(firstValue: cards[0].shade, secondValue: cards[1].shade)
-//        let matchedColor = Value.thirdMatched(firstValue: cards[0].color, secondValue: cards[1].color)
-//        let matchedSymbol = Value.thirdMatched(firstValue: cards[0].symbol, secondValue: cards[1].symbol)
-//        let matchedAmount = Value.thirdMatched(firstValue: cards[0].amount, secondValue: cards[1].amount)
-//
-//        let matchedCard = Card(shade:matchedShade,color:matchedColor,symbol:matchedSymbol,amount:matchedAmount)
-//
-//        return cards[2] == matchedCard
-//
+        let matchedShade = Value.thirdMatched(firstValue: cards[0].shade, secondValue: cards[1].shade)
+        let matchedColor = Value.thirdMatched(firstValue: cards[0].color, secondValue: cards[1].color)
+        let matchedSymbol = Value.thirdMatched(firstValue: cards[0].symbol, secondValue: cards[1].symbol)
+        let matchedAmount = Value.thirdMatched(firstValue: cards[0].amount, secondValue: cards[1].amount)
+
+        let matchedCard = Card(shade:matchedShade,color:matchedColor,symbol:matchedSymbol,amount:matchedAmount)
+
+        return cards[2] == matchedCard
+
     }
     
     mutating func drawCard() -> Card{

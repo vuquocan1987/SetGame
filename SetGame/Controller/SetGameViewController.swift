@@ -30,11 +30,11 @@ class SetGameViewController: UIViewController,UIDynamicAnimatorDelegate {
     @IBOutlet weak var disCardDrawCardStackView: UIStackView!
     var discardFrame: CGRect {
         get {
-        let x = discardPileView.frame.origin.x + disCardDrawCardStackView.frame.origin.x - gridCardView.frame.origin.x
-        let y = discardPileView.frame.origin.y + disCardDrawCardStackView.frame.origin.y - gridCardView.frame.origin.y
-        let width = discardPileView.frame.width
-        let height = discardPileView.frame.height
-        return CGRect(x: x, y: y, width: width, height: height)
+            let x = discardPileView.frame.origin.x + disCardDrawCardStackView.frame.origin.x - gridCardView.frame.origin.x
+            let y = discardPileView.frame.origin.y + disCardDrawCardStackView.frame.origin.y - gridCardView.frame.origin.y
+            let width = discardPileView.frame.width
+            let height = discardPileView.frame.height
+            return CGRect(x: x, y: y, width: width, height: height)
         }
     }
     var drawcardFrame: CGRect {
@@ -47,52 +47,52 @@ class SetGameViewController: UIViewController,UIDynamicAnimatorDelegate {
         }
     }
     
-//    grid.frame = gridCardView.frame
-//    moveCardsToUpdatePositions(animated: false)
-//
-//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//        super.viewWillTransition(to: size, with: coordinator)
-//        grid.frame = gridCardView.frame
-//        moveCardsToUpdatePositions(animated: false)
-//    }
+    //    grid.frame = gridCardView.frame
+    //    moveCardsToUpdatePositions(animated: false)
+    //
+    //    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    //        super.viewWillTransition(to: size, with: coordinator)
+    //        grid.frame = gridCardView.frame
+    //        moveCardsToUpdatePositions(animated: false)
+    //    }
     //    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        grid.frame = gridCardView.frame
-//        moveCardsToUpdatePositions(animated: false)
-//    }
+    //        super.viewDidLayoutSubviews()
+    //        grid.frame = gridCardView.frame
+    //        moveCardsToUpdatePositions(animated: false)
+    //    }
     func removeCardsAtIndices(indices: [Int]){
-
-            UIViewPropertyAnimator.runningPropertyAnimator(
-                withDuration: GameInfo.drawCardAnimationTime,
-                delay: 0.0, options: .curveEaseIn,
-                animations: { [weak self] in
-                    for index in indices {
-                        
-                        //care
-                        if let self = self {
-                        self.setCardButtons[index].frame = self.discardFrame
-                        }
-                    }
-            },
-                completion: {position in
+        
+        UIViewPropertyAnimator.runningPropertyAnimator(
+            withDuration: GameInfo.drawCardAnimationTime,
+            delay: 0.0, options: .curveEaseIn,
+            animations: { [weak self] in
+                for index in indices {
                     
-                    for index in indices{
-                        self.setUpCardViewWith(self.game.showingCards[index],self.setCardButtons[index])
-                        self.setCardButtons[index].frame = self.drawcardFrame
+                    //care
+                    if let self = self {
+                        self.setCardButtons[index].frame = self.discardFrame
                     }
+                }
+            },
+            completion: {position in
+                
+                for index in indices{
+                    self.setUpCardViewWith(self.game.showingCards[index],self.setCardButtons[index])
+                    self.setCardButtons[index].frame = self.drawcardFrame
+                }
                 UIViewPropertyAnimator.runningPropertyAnimator(
                     withDuration: GameInfo.drawCardAnimationTime,
                     delay: 0.0, options: .curveEaseIn,
                     animations: { [weak self] in
                         if let self = self {
                             
-                        
-                        for index in indices {
-                            self.setCardButtons[index].frame = self.grid[index]!
+                            
+                            for index in indices {
+                                self.setCardButtons[index].frame = self.grid[index]!
+                            }
                         }
-                        }
-                    })
-            })
+                })
+        })
     }
     
     

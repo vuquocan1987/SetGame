@@ -47,7 +47,7 @@ class SetCardView: UIButton {
             drawShade(path,CGPoint(x:startX,y:startY),width,height)
             startX += horizontalPadding + width
         }
-        
+        print("something")
         
     }
     private func drawShade(_ path:UIBezierPath, _ startingPoint: CGPoint, _ width: CGFloat, _ height: CGFloat) {
